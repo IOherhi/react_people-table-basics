@@ -1,1 +1,1 @@
-export * from './ShowPeoples'
+export * from './ShowPeoples';

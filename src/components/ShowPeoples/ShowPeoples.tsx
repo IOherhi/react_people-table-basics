@@ -10,30 +10,40 @@ type Props = {
   showLoader: boolean;
 };
 
-export const ShowPeoples: React.FC<Props> = ({ peoples, error, showLoader }) => {
+export const ShowPeoples: React.FC<Props> = ({
+  peoples,
+  error,
+  showLoader,
+}) => {
   const navigate = useNavigate();
   const { slug } = useParams();
 
   const searchFather = (person: Person) => {
     const father = peoples.find(p => p.name === person.fatherName);
+
     return father?.slug || '';
   };
 
   const searchMother = (person: Person) => {
     const mother = peoples.find(p => p.name === person.motherName);
+
     return mother?.slug || '';
   };
 
   if (showLoader) {
-    return <Loader />
+    return <Loader />;
   }
 
   if (error) {
-    return <p data-cy="peopleLoadingError" className="has-text-danger">Something went wrong</p>
+    return (
+      <p data-cy="peopleLoadingError" className="has-text-danger">
+        Something went wrong
+      </p>
+    );
   }
 
   if (peoples.length < 1) {
-    return <p data-cy="noPeopleMessage">There are no people on the server</p>
+    return <p data-cy="noPeopleMessage">There are no people on the server</p>;
   }
 
   return (
@@ -70,7 +80,9 @@ export const ShowPeoples: React.FC<Props> = ({ peoples, error, showLoader }) => 
                     e.preventDefault();
                     navigate(`/people/${person.slug}`);
                   }}
-                  className={classNames({ 'has-text-danger': person.sex === 'm' })}
+                  className={classNames({
+                    'has-text-danger': person.sex === 'm',
+                  })}
                   href={`#${person.slug}`}
                 >
                   {person.name}
