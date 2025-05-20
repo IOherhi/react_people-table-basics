@@ -1,5 +1,4 @@
 import './App.scss';
-import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 

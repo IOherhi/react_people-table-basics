@@ -20,9 +20,8 @@ export const PeoplePage = () => {
         .then(response => {
           setPeoples(response);
         })
-        .catch(err => {
+        .catch(() => {
           setError(true);
-          throw new Error(err);
         })
         .finally(() => {
           setShowLoader(false);

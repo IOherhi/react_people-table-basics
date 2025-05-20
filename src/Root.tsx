@@ -1,4 +1,3 @@
-import React from 'react';
 import { App } from './App';
 import { HomePage } from './components/HomePage';
 import { PeoplePage } from './components/PeoplePage';

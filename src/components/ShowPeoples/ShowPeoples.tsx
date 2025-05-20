@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 type Props = {
   error: boolean;
-  peoples: Person[];
+  peoples: Person[] | null;
   showLoader: boolean;
 };
 
@@ -17,6 +17,10 @@ export const ShowPeoples: React.FC<Props> = ({
 }) => {
   const navigate = useNavigate();
   const { slug } = useParams();
+
+  if (peoples === null) {
+    return null;
+  }
 
   const searchFather = (person: Person) => {
     const father = peoples.find(p => p.name === person.fatherName);
